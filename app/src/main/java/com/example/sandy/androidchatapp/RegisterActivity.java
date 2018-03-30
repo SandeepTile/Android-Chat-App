@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +22,8 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText mPassword;
     private Button mCreateBtn;
 
+    private Toolbar mToolbar;
+
     private FirebaseAuth mAuth;
 
     @Override
@@ -28,6 +31,14 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        //Toolbar set
+         mToolbar=(Toolbar)findViewById(R.id.register_toolbar);
+         setSupportActionBar(mToolbar);
+         getSupportActionBar().setTitle("Create Account");
+         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+        //Firebase Authentication
         mAuth = FirebaseAuth.getInstance();
 
         mDisplayName=(EditText)findViewById(R.id.reg_display_name);
