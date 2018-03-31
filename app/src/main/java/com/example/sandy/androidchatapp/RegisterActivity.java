@@ -1,13 +1,16 @@
 package com.example.sandy.androidchatapp;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,10 +29,15 @@ public class RegisterActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
+    private ProgressDialog mRegisterProgress;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        //Progressbar
+        mRegisterProgress=new ProgressDialog(this);
 
         //Toolbar set
          mToolbar=(Toolbar)findViewById(R.id.register_toolbar);
@@ -54,7 +62,23 @@ public class RegisterActivity extends AppCompatActivity {
                 String email=mEmail.getText().toString();
                 String password=mPassword.getText().toString();
 
-                register_user(display_name,email,password);
+                if (!TextUtils.isEmpty(display_name)||!TextUtils.isEmpty(email)||!TextUtils.isEmpty(password)){
+
+
+                    //Register user Progress Dialog
+                    mRegisterProgress.setTitle("Registering User");
+                    mRegisterProgress.setMessage("Please wait while we Creating your account");
+                    mRegisterProgress.setCanceledOnTouchOutside(false);
+                    mRegisterProgress.show();
+
+                    register_user(display_name,email,password);
+
+                }else {
+
+                    Toast.makeText(RegisterActivity.this, "Fill all Fields", Toast.LENGTH_SHORT).show();
+                }
+
+
 
             }
         });
@@ -68,6 +92,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 if(task.isSuccessful()){
 
+                    mRegisterProgress.dismiss();
                     Intent mainIntent=new Intent(RegisterActivity.this,MainActivity.class);
                     startActivity(mainIntent);
                     finish();
@@ -75,6 +100,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 }else {
 
+                    mRegisterProgress.hide();
                     Toast.makeText(RegisterActivity.this, "Failed", Toast.LENGTH_SHORT).show();
                 }
 

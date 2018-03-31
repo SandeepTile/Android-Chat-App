@@ -4,14 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     tools:context=".StartActivity">
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Welcome Page"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="256dp"
+        android:gravity="center"
+        android:text="Welcome To Android \nChat App"
         android:textSize="24dp" />
 
     <Button
@@ -20,6 +24,20 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="176dp"
-        android:text="NEED A NEW ACCOUNT" />
+        android:layout_marginBottom="83dp"
+        android:padding="20dp"
+        android:text="NEED A NEW ACCOUNT"
+        android:textColor="@color/colorPrimary" />
+
+    <Button
+        android:id="@+id/start_already_acc_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="147dp"
+        android:backgroundTint="@color/colorAccent"
+        android:padding="20dp"
+        android:text="ALREADY HAVE ACCOUNT"
+        android:textColor="@android:color/white" />
 </RelativeLayout>
