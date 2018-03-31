@@ -94,6 +94,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                     mRegisterProgress.dismiss();
                     Intent mainIntent=new Intent(RegisterActivity.this,MainActivity.class);
+                    mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(mainIntent);
                     finish();
 
