@@ -72,7 +72,7 @@ public class RegisterActivity extends AppCompatActivity {
                 if (!TextUtils.isEmpty(display_name)||!TextUtils.isEmpty(email)||!TextUtils.isEmpty(password)){
 
 
-                    //Register user Progress Dialog
+                    //Register user Progress_Dialog
                     mRegisterProgress.setTitle("Registering User");
                     mRegisterProgress.setMessage("Please wait while we Creating your account");
                     mRegisterProgress.setCanceledOnTouchOutside(false);
@@ -102,7 +102,7 @@ public class RegisterActivity extends AppCompatActivity {
                     FirebaseUser current_user=FirebaseAuth.getInstance().getCurrentUser();
                     String uid=current_user.getUid();
 
-                    mDatabase= FirebaseDatabase.getInstance().getReference().child("users").child(uid);
+                    mDatabase= FirebaseDatabase.getInstance().getReference().child("Users").child(uid);
 
                     HashMap<String,String> usermap=new HashMap<>();
                     usermap.put("name",display_name);

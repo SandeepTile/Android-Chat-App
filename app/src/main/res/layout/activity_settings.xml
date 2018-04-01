@@ -23,10 +23,9 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="253dp"
-        android:text="TextView"
+        android:text="Display Name"
         android:textColor="@android:color/white"
-        android:textSize="24dp"
-        tools:text="Display Name" />
+        android:textSize="24dp" />
 
     <TextView
         android:id="@+id/settings_status"
@@ -58,8 +57,9 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="114dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
+        android:background="@android:color/white"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
         android:text="change name" />
 
 </RelativeLayout>
