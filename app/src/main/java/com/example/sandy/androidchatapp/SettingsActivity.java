@@ -1,7 +1,10 @@
 package com.example.sandy.androidchatapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,6 +26,9 @@ public class SettingsActivity extends AppCompatActivity {
     private TextView mName;
     private TextView mStatus;
 
+    private Button mStatusBtn;
+    private Button mImageBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +37,7 @@ public class SettingsActivity extends AppCompatActivity {
         mDisplayImage=(CircleImageView)findViewById(R.id.settings_image);
         mName=(TextView)findViewById(R.id.settings_display_name);
         mStatus=(TextView)findViewById(R.id.settings_status);
+        mStatusBtn=(Button)findViewById(R.id.settings_status_btn);
 
         //Check Current user
         mCurrentUser=FirebaseAuth.getInstance().getCurrentUser();
@@ -56,6 +63,18 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
+            }
+        });
+
+        mStatusBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String status_value=mStatus.getText().toString();
+
+                Intent status_Intent=new Intent(SettingsActivity.this,StatusActivity.class);
+                status_Intent.putExtra("status_value",status_value);
+                startActivity(status_Intent);
             }
         });
 
