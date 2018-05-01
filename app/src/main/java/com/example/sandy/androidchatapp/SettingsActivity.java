@@ -25,9 +25,8 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
-import com.theartofdev.edmodo.cropper.CropImageView;
 
-import java.util.Random;
+
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -108,11 +107,11 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent gallaryIntent=new Intent();
-                gallaryIntent.setType("image/*");
-                gallaryIntent.setAction(Intent.ACTION_GET_CONTENT);
+                Intent galleryIntent=new Intent();
+                galleryIntent.setType("image/*");
+                galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
 
-                startActivityForResult(Intent.createChooser(gallaryIntent,"SELECT IMAGE"), GALLERY_PICK);
+                startActivityForResult(Intent.createChooser(galleryIntent,"SELECT IMAGE"), GALLERY_PICK);
 
                 /*
                 CropImage.activity()
