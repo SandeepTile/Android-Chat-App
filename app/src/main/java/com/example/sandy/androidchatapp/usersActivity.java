@@ -1,5 +1,7 @@
 package com.example.sandy.androidchatapp;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -7,10 +9,13 @@ import android.support.v7.widget.RecyclerView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class usersActivity extends AppCompatActivity {
 
@@ -55,6 +60,22 @@ public class usersActivity extends AppCompatActivity {
 
              viewHolder.setName(model.getName());
              viewHolder.setUserStatus(model.getStatus());
+             viewHolder.setUserImage(model.getThumb_image());
+
+             final String user_id=getRef(position).getKey();
+
+
+             viewHolder.mView.setOnClickListener(new View.OnClickListener() {
+                 @Override
+                 public void onClick(View v) {
+
+
+                     Intent profileIntent=new Intent(usersActivity.this,ProfileActivity.class);
+                     profileIntent.putExtra("user_id",user_id);
+                     startActivity(profileIntent);
+
+                 }
+             });
 
          }
      };
@@ -86,6 +107,16 @@ public class usersActivity extends AppCompatActivity {
 
             TextView userStatusView=mView.findViewById(R.id.user_single_status);
             userStatusView.setText(status);
+        }
+
+        public void setUserImage(String thumb_image){
+
+            CircleImageView userImage=(CircleImageView)mView.findViewById(R.id.user_single_image);
+
+            Picasso.get().load(thumb_image).placeholder(R.mipmap.defaultuser).into(userImage);
+
+
+
         }
     }
 }
