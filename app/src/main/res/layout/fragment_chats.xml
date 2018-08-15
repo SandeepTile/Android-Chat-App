@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="chats fragment"
-        android:textSize="24dp" />
+        android:textSize="24dp"
+        android:gravity="center"/>
 
 </FrameLayout>
